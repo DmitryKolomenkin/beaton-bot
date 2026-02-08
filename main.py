@@ -735,7 +735,7 @@ async def intent_chosen(msg: types.Message, state: FSMContext):
         return await msg.answer("❌ Используйте кнопки.")
 
     await state.update_data(intent=msg.text, temp_photos=[], temp_videos=[], is_processing=False)
-    await msg.answer("Прикрепите фото (до 3) или 1 видео/GIF:", reply_markup=ReplyKeyboardRemove())
+    await msg.answer("Прикрепите до 3 фото или 1 видео:", reply_markup=ReplyKeyboardRemove())
     await state.set_state(ReportState.uploading_media)
 
 
@@ -963,4 +963,5 @@ if __name__ == "__main__":
     try:
         asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):
+
         logger.info("Бот остановлен!")
